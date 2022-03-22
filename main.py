@@ -71,7 +71,10 @@ def start(update: Update, context: CallbackContext) -> None:
 
 
 def main():
-    updater = Updater('5205653266:AAHWY7doMXfi89tO2NSpW_lua5PD6oHzV9w')
+    with open('token') as tf:
+        token = tf.readline()
+
+    updater = Updater(token)
 
     updater.dispatcher.add_handler(CommandHandler('start', start))
     updater.dispatcher.add_handler(MessageHandler(Filters.text, get_charts))
